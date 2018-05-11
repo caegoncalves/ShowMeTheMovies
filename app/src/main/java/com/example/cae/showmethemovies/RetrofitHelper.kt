@@ -22,7 +22,7 @@ object RetrofitHelper {
     private fun rebuildRetrofit() {
         val client = buildClient()
         retrofit = Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/movie/")
+                    .baseUrl("https://api.themoviedb.org/3/movie/")
                 .addConverterFactory(GsonConverterFactory.create(buildGson()))
                 .client(client)
                 .build()

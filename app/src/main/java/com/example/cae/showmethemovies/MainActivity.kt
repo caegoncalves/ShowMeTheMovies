@@ -2,19 +2,15 @@ package com.example.cae.showmethemovies
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.cae.showmethemovies.models.MovieItem
 import com.example.cae.showmethemovies.models.MoviesResult
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity: AppCompatActivity(), VideoClickListener {
-    override fun onItemClicked(item: MovieItem) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class MainActivity: AppCompatActivity() {
 
-    val adapter = MoviedbAdapter(this)
+    val adapter = MoviedbAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

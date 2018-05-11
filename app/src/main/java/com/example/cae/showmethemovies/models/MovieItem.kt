@@ -11,6 +11,8 @@ class MovieItem {
     @Expose
     @SerializedName("overview")
     var description: String? = null
-
+    @Expose
+    @SerializedName("poster_path")
+    var poster: String? = null
 
 }

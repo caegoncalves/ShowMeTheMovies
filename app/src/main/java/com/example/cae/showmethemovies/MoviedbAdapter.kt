@@ -1,13 +1,15 @@
 package com.example.cae.showmethemovies
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cae.showmethemovies.models.MovieItem
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_content.view.*
 
-class MoviedbAdapter(val videoClickListener: VideoClickListener): RecyclerView.Adapter<MoviesViewHolder>() {
+class MoviedbAdapter: RecyclerView.Adapter<MoviesViewHolder>() {
 
     var items: List<MovieItem> = emptyList()
         set(value) {
@@ -28,22 +30,23 @@ class MoviedbAdapter(val videoClickListener: VideoClickListener): RecyclerView.A
         val item = items[position]
         holder.bind(item)
         holder.view.setOnClickListener {
+            val intent = Intent(holder.view.context, MovieDetailActivity::class.java)
 
-            videoClickListener.onItemClicked(item)
-
+            holder.view.context.startActivity(intent)
         }
     }
 }
 
 class MoviesViewHolder(var view: View): RecyclerView.ViewHolder(view) {
 
+    val basePosterURL: String = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
+
     fun bind(item: MovieItem) {
         view.titleTextView.text = item.title
         view.descriptionTextView.text = item.description
+        val posterMovieImageView =  view.posterImageView
+        Picasso.get().load(basePosterURL + item.poster).into(posterMovieImageView)
+
     }
-}
 
-interface VideoClickListener {
-
-    fun onItemClicked(item: MovieItem)
 }
