@@ -31,7 +31,9 @@ class MoviedbAdapter: RecyclerView.Adapter<MoviesViewHolder>() {
         holder.bind(item)
         holder.view.setOnClickListener {
             val intent = Intent(holder.view.context, MovieDetailActivity::class.java)
+            var id = holder.view.id
 
+            intent.putExtra("id", id)
             holder.view.context.startActivity(intent)
         }
     }
@@ -39,7 +41,7 @@ class MoviedbAdapter: RecyclerView.Adapter<MoviesViewHolder>() {
 
 class MoviesViewHolder(var view: View): RecyclerView.ViewHolder(view) {
 
-    val basePosterURL: String = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
+    private val basePosterURL: String = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
 
     fun bind(item: MovieItem) {
         view.titleTextView.text = item.title

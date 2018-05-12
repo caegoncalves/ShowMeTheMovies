@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName
 class MovieItem {
 
     @Expose
+    @SerializedName("id")
+    var id: String? = null
+    @Expose
     @SerializedName("title")
     var title: String? = null
     @Expose
